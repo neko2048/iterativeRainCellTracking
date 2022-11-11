@@ -23,7 +23,7 @@ echo $i
 echo ${caselist[$i]}
 
    ### Definition
-#   SUFFIX=${caselist[$i]}
+   SUFFIX=${caselist[$i]}
    PFAD=`pwd`
 #   EXPT=cln 
 #   EXPT=dty
@@ -31,12 +31,12 @@ echo ${caselist[$i]}
 
    ### File Preparation ###
    #cd /data3/C.brobbtyh/CCN_TSA/RRtracking/${SUFFIX}${EXPT}
-   cd /home/atmenu10246/iterativeRainCellTracking/mjo
+   cd /home/atmenu10246/iterativeRainCellTracking/RRtrack/${SUFFIX}
    cp ${PFAD}/compile_tracking.sh .
    cp ${PFAD}/irt_advection_field_release.f90 .
    cp ${PFAD}/irt_objects_release.f90 .
    cp ${PFAD}/irt_parameters.f90 .
-   cp ${PFAD}/irt_parameters.f90_yuhung .
+   cp ${PFAD}/irt_parameters_fskao.f90 .
    cp ${PFAD}/irt_parameters.mod .
    cp ${PFAD}/irt_trackmask_release.f90 .
    cp ${PFAD}/irt_tracks_release.f90 .

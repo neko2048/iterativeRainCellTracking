@@ -1,5 +1,5 @@
-GFORTRAN module version '0' created from irt_parameters.f90 on Fri Nov 11 15:07:30 2022
-MD5:bea915bb3bc2df393524350590e18480 -- If you edit this, you'll get what you deserve.
+GFORTRAN module version '0' created from irt_parameters.f90 on Fri Nov 11 16:12:46 2022
+MD5:3b8564de39fa0b28d1d404fcf7474a94 -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () () ()
 () () ())
@@ -34,7 +34,7 @@ UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () (
 CONSTANT (REAL 4 0 0 REAL ()) 0 '0.3af26f4@-2') () 0 () () () 0 0)
 8 'llonlatgrid' 'irt_parameters' 'llonlatgrid' 1 ((PARAMETER
 UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (LOGICAL 4 0 0
-LOGICAL ()) 0 0 () (CONSTANT (LOGICAL 4 0 0 LOGICAL ()) 0 1) () 0 () ()
+LOGICAL ()) 0 0 () (CONSTANT (LOGICAL 4 0 0 LOGICAL ()) 0 0) () 0 () ()
 () 0 0)
 9 'lon_inc' 'irt_parameters' 'lon_inc' 1 ((PARAMETER UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () (
@@ -89,7 +89,7 @@ CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') () 0 () () () 0 0)
 () () () 0 0)
 24 'threshold' 'irt_parameters' 'threshold' 1 ((PARAMETER UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 4 0 0 REAL ()) 0 0 () (
-CONSTANT (REAL 4 0 0 REAL ()) 0 '0.5000000@1') () 0 () () () 0 0)
+CONSTANT (REAL 4 0 0 REAL ()) 0 '0.1000000@1') () 0 () () () 0 0)
 25 'time_steps' 'irt_parameters' 'time_steps' 1 ((PARAMETER
 UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0
 INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '628') () 0 ()
