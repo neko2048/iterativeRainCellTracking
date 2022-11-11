@@ -10,7 +10,7 @@ class ParamRetriever:
     def printDomainSize(self):
         print("domainsize_x = {}".format(len(self.data["xc"])))
         print("domainsize_y = {}".format(len(self.data["yc"])))
-
+        print("! domainsize_z = {}".format(len(self.data["zc"])))
     def printlLonLatGrid(self):
         try:
             self.data["lon"]
