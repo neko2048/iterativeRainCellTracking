@@ -5,16 +5,16 @@ IMPLICIT NONE
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ! folder and file
-CHARACTER(255) :: path="/data3/mog/taiwanvvm" ! path of the outputs
-CHARACTER(255), DIMENSION(30) :: expt ! name of experiment
+CHARACTER(255) :: path="/data3/mog/les/mjo_std_mg" ! path of the outputs
+CHARACTER(255), DIMENSION(1) :: expt ! name of experiment
 CHARACTER(255) :: fname ! name of netCDF file
 ! dimension
 INTEGER, PARAMETER :: nx=1024
 INTEGER, PARAMETER :: ny=1024
-INTEGER, PARAMETER :: nz=70
+INTEGER, PARAMETER :: nz=120
 ! resolution [m]
-REAL, PARAMETER :: dx=500.
-REAL, PARAMETER :: dy=500.
+REAL, PARAMETER :: dx=100.
+REAL, PARAMETER :: dy=100.
 REAL, DIMENSION(nz) :: dz
 ! geographic coordinate
 REAL, DIMENSION(nx) :: lon ! longitude
@@ -69,20 +69,22 @@ REAL :: tarray(2), time, dtime
 INQUIRE(IOLENGTH=lrec) flagmap_con
 
 
-expt=(/"tpe20050712","tpe20050723","tpe20060508","tpe20060718","tpe20060721", &
-       "tpe20070830","tpe20080715","tpe20090707","tpe20090817","tpe20090827", &
-       "tpe20100629","tpe20100630","tpe20100802","tpe20100803","tpe20100912", &
-       "tpe20110615","tpe20110616","tpe20110702","tpe20110723","tpe20110802", &
-       "tpe20110816","tpe20110821","tpe20120715","tpe20120819","tpe20130723", &
-       "tpe20130807","tpe20130825","tpe20140525","tpe20140703","tpe20140825"/)
+!expt=(/"tpe20050712","tpe20050723","tpe20060508","tpe20060718","tpe20060721", &
+!       "tpe20070830","tpe20080715","tpe20090707","tpe20090817","tpe20090827", &
+!       "tpe20100629","tpe20100630","tpe20100802","tpe20100803","tpe20100912", &
+!       "tpe20110615","tpe20110616","tpe20110702","tpe20110723","tpe20110802", &
+!       "tpe20110816","tpe20110821","tpe20120715","tpe20120819","tpe20130723", &
+!       "tpe20130807","tpe20130825","tpe20140525","tpe20140703","tpe20140825"/)
+expt=(/"mjo"/)
 
-DO e=1,30
+!DO e=1,30
+DO e=1, 1
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !!! Read Initial Profile !!!
 ! filename
-WRITE(fname,99) "/data3/C.brobbtyh/fort98/TaiwanVVM/",TRIM(expt(e)),"_fort.98"
-99 FORMAT(3A)
+WRITE(fname,99) "/data3/mog/les/mjo_std_mg/fort.98"
+99 FORMAT(A)
 ! open file
 OPEN(UNIT=10,FILE=fname)
 ! read data
@@ -111,8 +113,8 @@ ENDDO
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! Read Topography Information !!!
 ! filename
-WRITE(fname,100) TRIM(path),"/",TRIM(expt(e)),"cln/TOPO.nc"
-100 FORMAT(4A)
+WRITE(fname,100) "/data3/mog/les/mjo_std_mg/TOPO.nc"
+100 FORMAT(A)
 ! open netCDF file
 status=NF90_OPEN(TRIM(fname),NF90_NOWRITE,ncID)
 IF (status /= nf90_noerr) THEN
@@ -154,15 +156,17 @@ status=NF90_CLOSE(ncID)
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-DO t=0,144
+DO t=0,627
 time=dtime(tarray)
    !!! Read netCDF of Thermodynamic Field !!!
    ! filename
-   WRITE(fname,101) TRIM(path),"/",TRIM(expt(e)),"cln/archive/exp.L.Thermodynamic-",t,".nc"
-   101 FORMAT(4A,I6.6,A)
+   !WRITE(fname,101) TRIM(path),"/",TRIM(expt(e)),"cln/archive/exp.L.Thermodynamic-",t,".nc"
+   WRITE(fname,101) TRIM(path),"/archive/mjo_std_mg.L.Thermodynamic-",t,".nc"
+   101 FORMAT(2A,I6.6,A)
    ! open netCDF file
    status=NF90_OPEN(TRIM(fname),NF90_NOWRITE,ncID)
-   IF (status /= nf90_noerr) THEN 
+   IF (status /= nf90_noerr) THEN
+      WRITE(*,*) fname 
       WRITE(*,*) "open fail thermo.nc"
       GOTO 1000
    ENDIF
@@ -193,7 +197,8 @@ time=dtime(tarray)
 
    !!! Read netCDF of Dynamic Field !!!
    ! filename
-   WRITE(fname,101) TRIM(path),"/",TRIM(expt(e)),"cln/archive/exp.L.Dynamic-",t,".nc"
+   !WRITE(fname,101) TRIM(path),"/",TRIM(expt(e)),"cln/archive/mjo_std_mg.L.Dynamic-",t,".nc"
+   WRITE(fname,101) TRIM(path),"/archive/mjo_std_mg.L.Dynamic-",t,".nc"
    ! open netCDF file
    status=NF90_OPEN(TRIM(fname),NF90_NOWRITE,ncID)
    IF (status /= nf90_noerr) THEN
@@ -216,7 +221,8 @@ time=dtime(tarray)
 
    !!! Read netCDF of Surface Parameters !!!
    ! filename
-   WRITE(fname,101) TRIM(path),"/",TRIM(expt(e)),"cln/archive/exp.C.Surface-",t,".nc"
+   !WRITE(fname,101) TRIM(path),"/",TRIM(expt(e)),"cln/archive/exp.C.Surface-",t,".nc"
+   WRITE(fname,101) TRIM(path),"/archive/mjo_std_mg.C.Surface-",t,".nc"
    ! open netCDF file
    status=NF90_OPEN(TRIM(fname),NF90_NOWRITE,ncID)
    IF (status /= nf90_noerr) THEN
@@ -297,7 +303,9 @@ write(*,*) t, time
 
    !!! Write Result --- Map !!!
    ! filename
-   WRITE(fname,102) TRIM(expt(e)),"_clean_cloudmap_",t,".dat"
+   !WRITE(fname,102) TRIM(expt(e)),"_clean_cloudmap_",t,".dat"
+   !102 FORMAT(2A,I6.6,A)
+   WRITE(fname,102) "/home/atmenu10246/iterativeRainCellTracking/cloudObject/","clean_cloudmap_",t,".dat"
    102 FORMAT(2A,I6.6,A)
    ! open file
    OPEN(UNIT=12,FILE=TRIM(fname),FORM='UNFORMATTED',STATUS='UNKNOWN',ACCESS='DIRECT',RECL=lrec)
@@ -308,7 +316,7 @@ write(*,*) t, time
 
    !!! Write Result --- Metadata !!!
    ! filename
-   WRITE(fname,102) TRIM(expt(e)),"_clean_cloudproperties_",t,".txt"
+   WRITE(fname,102) "/home/atmenu10246/iterativeRainCellTracking/cloudObject/","clean_cloudproperties_",t,".txt"
    ! open file
    OPEN(UNIT=13,FILE=TRIM(fname),FORM="FORMATTED",STATUS="UNKNOWN")
    ! write data
