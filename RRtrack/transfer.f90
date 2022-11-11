@@ -47,21 +47,21 @@ DO i=0,NT
    RR = RR * 3600    
 
    !!! Prepare Headers for SERVICE !!!
-   !srv_header(1) = 1             ! Code
-   !srv_header(2) = 1             ! Level
-   !srv_header(3) = 20190101      ! Datum
-   !srv_header(4) = i             ! Zeitinkrement
-   !srv_header(5) = NX
-   !srv_header(6) = NY
-   !srv_header(7) = 0
-   !srv_header(8) = 0
+   srv_header(1) = 1             ! Code
+   srv_header(2) = 1             ! Level
+   srv_header(3) = 20190101      ! Datum
+   srv_header(4) = i             ! Zeitinkrement
+   srv_header(5) = NX
+   srv_header(6) = NY
+   srv_header(7) = 0
+   srv_header(8) = 0
 
    !!! Write SERVICE !!!
-   !WRITE(20) srv_header
-   !WRITE(20) RR
+   WRITE(20) srv_header
+   WRITE(20) RR
 
 ENDDO
-!CLOSE(20)
+CLOSE(20)
 
 END PROGRAM write_srv
 

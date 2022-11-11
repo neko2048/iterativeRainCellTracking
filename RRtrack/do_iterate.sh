@@ -14,7 +14,8 @@ set -ex
 
 #typeset -Z2 iteration
 
-caselist=(tpe20050712 tpe20050723 tpe20060508 tpe20060718 tpe20060721 tpe20070830 tpe20080715 tpe20090707 tpe20090817 tpe20090827 tpe20100629 tpe20100630 tpe20100802 tpe20100803 tpe20100912 tpe20110615 tpe20110616 tpe20110702 tpe20110723 tpe20110802 tpe20110816 tpe20110821 tpe20120715 tpe20120819 tpe20130723 tpe20130807 tpe20130825 tpe20140525 tpe20140703 tpe20140825)
+#caselist=(tpe20050712 tpe20050723 tpe20060508 tpe20060718 tpe20060721 tpe20070830 tpe20080715 tpe20090707 tpe20090817 tpe20090827 tpe20100629 tpe20100630 tpe20100802 tpe20100803 tpe20100912 tpe20110615 tpe20110616 tpe20110702 tpe20110723 tpe20110802 tpe20110816 tpe20110821 tpe20120715 tpe20120819 tpe20130723 tpe20130807 tpe20130825 tpe20140525 tpe20140703 tpe20140825)
+caselist=(mjo)
 total=${#caselist[*]}
 
 for ((i=0;i<=$(($total-1));i++)); do
@@ -22,14 +23,15 @@ echo $i
 echo ${caselist[$i]}
 
    ### Definition
-   SUFFIX=${caselist[$i]}
+#   SUFFIX=${caselist[$i]}
    PFAD=`pwd`
 #   EXPT=cln 
 #   EXPT=dty
-   EXPT=future
- 
+#   EXPT=future
+
    ### File Preparation ###
-   cd /data3/C.brobbtyh/CCN_TSA/RRtracking/${SUFFIX}${EXPT}
+   #cd /data3/C.brobbtyh/CCN_TSA/RRtracking/${SUFFIX}${EXPT}
+   cd /home/atmenu10246/iterativeRainCellTracking/mjo
    cp ${PFAD}/compile_tracking.sh .
    cp ${PFAD}/irt_advection_field_release.f90 .
    cp ${PFAD}/irt_objects_release.f90 .
@@ -39,7 +41,7 @@ echo ${caselist[$i]}
    cp ${PFAD}/irt_trackmask_release.f90 .
    cp ${PFAD}/irt_tracks_release.f90 .
    cp ${PFAD}/irt_tracklinks_release.f90 .
-   cp irt_parameters.f90_yuhung irt_parameters.f90
+   cp irt_parameters_fskao.f90 irt_parameters.f90
 
    ### Compile ###
    ./compile_tracking.sh
