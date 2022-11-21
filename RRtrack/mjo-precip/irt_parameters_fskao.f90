@@ -22,8 +22,8 @@ INTEGER, PARAMETER    :: nt_bins = 1         ! 6 hourly
 INTEGER, PARAMETER    :: nx_bins = 1
 INTEGER, PARAMETER    :: ny_bins = 1
 
-REAL, PARAMETER       :: threshold = 0.001            ! for intensity
-REAL, PARAMETER       :: minimum_size = 4       ! events smaller than that will be sorted out
+REAL, PARAMETER       :: threshold = 1.0            ! for intensity
+REAL, PARAMETER       :: minimum_size = 1       ! events smaller than that will be sorted out
 
 REAL, PARAMETER       :: termination_sensitivity=1.0      ! Choose value between 0.0 and 1.0
 
