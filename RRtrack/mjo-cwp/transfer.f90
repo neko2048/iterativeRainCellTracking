@@ -2,7 +2,7 @@ PROGRAM write_srv
 USE netcdf
 IMPLICIT NONE
 
-INTEGER, PARAMETER :: NX=1024, NY=1024, NT=627 ! dimension
+INTEGER, PARAMETER :: NX=1024, NY=1024, NT=628 ! dimension
 REAL, DIMENSION(NX,NY) :: RR ! rain rate
 INTEGER, DIMENSION(8) :: srv_header ! header foe SERVICE
 INTEGER :: i,e ! counter
