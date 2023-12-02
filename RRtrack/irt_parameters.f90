@@ -4,7 +4,7 @@ MODULE irt_parameters
 INTEGER, PARAMETER    :: domainsize_x = 1024
 INTEGER, PARAMETER    :: domainsize_y = 1024
 
-LOGICAL, PARAMETER    :: llonlatgrid = .TRUE.
+LOGICAL, PARAMETER    :: llonlatgrid = .FALSE.
 REAL, PARAMETER       :: unit_area = 0.01 ! in 0.1x0.1 deg grid boxes
 ! only used if llonlatgrid=.TRUE., otherwvim ise set to arbitrary value:
 REAL, PARAMETER       :: lat_first = -0.4600752153993973
@@ -22,7 +22,7 @@ INTEGER, PARAMETER    :: nt_bins = 1         ! 6 hourly
 INTEGER, PARAMETER    :: nx_bins = 1
 INTEGER, PARAMETER    :: ny_bins = 1
 
-REAL, PARAMETER       :: threshold = 5.0            ! for intensity
+REAL, PARAMETER       :: threshold = 0.2            ! for intensity
 REAL, PARAMETER       :: minimum_size = 1       ! events smaller than that will be sorted out
 
 REAL, PARAMETER       :: termination_sensitivity=1.0      ! Choose value between 0.0 and 1.0
